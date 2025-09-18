@@ -69,11 +69,18 @@ namespace Grocery.App.ViewModels
         public void AddProduct(Product product)
         {
             //Controleer of het product bestaat en dat de Id > 0
+            List<Product> allProducts = _productService.GetAll();
+            if (!allProducts.Contains(product) || product.Id <= 0) return;
             //Maak een GroceryListItem met Id 0 en vul de juiste productid en grocerylistid
+            GroceryListItem groceryListItem = new GroceryListItem(0, GroceryList.Id, product.Id, product.Stock);
             //Voeg het GroceryListItem toe aan de dataset middels de _groceryListItemsService
+            _groceryListItemsService.Add(groceryListItem);
             //Werk de voorraad (Stock) van het product bij en zorg dat deze wordt vastgelegd (middels _productService)
+            _productService.Update(product);
             //Werk de lijst AvailableProducts bij, want dit product is niet meer beschikbaar
+            AvailableProducts.Remove(product);
             //call OnGroceryListChanged(GroceryList);
+            OnGroceryListChanged(GroceryList);
         }
     }
 }
