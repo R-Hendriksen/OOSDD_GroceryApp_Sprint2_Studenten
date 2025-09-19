@@ -1,7 +1,7 @@
 # GroceryApp sprint2 
 
-## Docentversie  
-In deze versie zijn de wijzigingen doorgevoerd en is de code compleet.  
+## Branching strategie  
+In deze repository wordt 'Gitflow' als branching strategie gehanteerd.
 
 ## Studentversie:  
 ### UC04 Kiezen kleur boodschappenlijst  
