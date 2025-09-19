@@ -16,15 +16,15 @@ namespace Grocery.Core.Data.Repositories
                 new Client(3, "A.J. Kwak", "user3@mail.com", "sxnIcZdYt8wC8MYWcQVQjQ==.FKd5Z/jwxPv3a63lX+uvQ0+P7EuNYZybvkmdhbnkIHA=")
             ];
         }
-
+        
         public Client? Get(string email)
         {
-            return clientList[0];
+            return clientList.FirstOrDefault((c) => c.EmailAddress == email);
         }
 
         public Client? Get(int id)
         {
-            return clientList[0];
+            return clientList.FirstOrDefault((c) => c.Id == id);
         }
 
         public List<Client> GetAll()
